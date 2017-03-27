@@ -20,7 +20,7 @@ public class Cleric extends BaseCharacter {
         return random.nextInt(max - min) + min;
     }
 
-    @Override
+    //@Override
     public void PrintCharacterStats() {
         super.PrintCharacterStats();
         System.out.println("HP: " + hp);

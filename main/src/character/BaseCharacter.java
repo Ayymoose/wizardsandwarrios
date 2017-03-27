@@ -9,6 +9,7 @@ public class BaseCharacter {
     private int wisdom;
     private String type;
     private String name;
+    private Inventory inventory = new Inventory();
 
     public BaseCharacter(int strength, int dexterity, int constitution, int intelligence, int wisdom, String type, String name) {
         this.strength = strength;
@@ -46,6 +47,10 @@ public class BaseCharacter {
 
     public String getName() {
         return name;
+    }
+    
+    public String getInventory() {
+    	return inventory.toString();
     }
 
     public void PrintCharacterStats() {

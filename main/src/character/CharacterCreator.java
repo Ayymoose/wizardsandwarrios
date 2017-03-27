@@ -51,9 +51,14 @@ public class CharacterCreator {
 
         System.out.println("Your character stats have been randomly rolled for you: ");
         System.out.println();
+        
         System.out.println("You are the " + newCharacter.getType() + " who goes by the name " + newCharacter.getName());
         System.out.println("Your stats are:");
         newCharacter.PrintCharacterStats();
+        
+        System.out.println();
+        System.out.println("You're in luck! You're inventory is stocked with:");
+        System.out.println(newCharacter.getInventory());
 
         return newCharacter;
     }
