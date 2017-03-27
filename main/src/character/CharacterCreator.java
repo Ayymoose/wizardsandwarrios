@@ -12,7 +12,7 @@ public class CharacterCreator {
         Scanner sc = new Scanner(System.in);
         String characterName;
 
-        String[] characterTypes = {"Fighter", "Paladin", "Barbarian", "Cleric", "Rouge", "Druid"};
+        String[] characterTypes = {"", "Fighter", "Paladin", "Barbarian", "Cleric", "Rouge", "Druid"};
         int characterClass = ClassChooser();
 
         System.out.println("Enter the name of your character");
@@ -21,28 +21,34 @@ public class CharacterCreator {
         BaseCharacter newCharacter = null;
         switch (characterClass) {
             case 1:
-                newCharacter = new Fighter(RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),
-                        RandomNumber(), characterTypes[characterClass], characterName);
+                newCharacter = new Fighter(RandomNumber(20), RandomNumber(20), RandomNumber(20),
+                        RandomNumber(20), RandomNumber(20), 10,
+                        characterTypes[characterClass], characterName);
                 break;
             case 2:
-                newCharacter = new Paladin(RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),
-                        RandomNumber(), characterTypes[characterClass], characterName);
+                newCharacter = new Paladin(RandomNumber(20), RandomNumber(20), RandomNumber(20),
+                        RandomNumber(20), RandomNumber(20), 8,
+                        characterTypes[characterClass], characterName);
                 break;
             case 3:
-                newCharacter = new Barbarian(RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),
-                        RandomNumber(), characterTypes[characterClass], characterName);
+                newCharacter = new Barbarian(RandomNumber(20), RandomNumber(20), RandomNumber(20),
+                        RandomNumber(20), RandomNumber(20), 12,
+                        characterTypes[characterClass], characterName);
                 break;
             case 4:
-                newCharacter = new Cleric(RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),
-                        RandomNumber(), characterTypes[characterClass], characterName);
+                newCharacter = new Cleric(RandomNumber(20), RandomNumber(20), RandomNumber(20),
+                        RandomNumber(20), RandomNumber(20), 8,
+                        characterTypes[characterClass], characterName);
                 break;
             case 5:
-                newCharacter = new Rouge(RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),
-                        RandomNumber(), characterTypes[characterClass], characterName);
+                newCharacter = new Rouge(RandomNumber(20), RandomNumber(20), RandomNumber(20),
+                        RandomNumber(20), RandomNumber(20), 5,
+                        characterTypes[characterClass], characterName);
                 break;
             case 6:
-                newCharacter = new Druid(RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),
-                        RandomNumber(), characterTypes[characterClass], characterName);
+                newCharacter = new Druid(RandomNumber(20), RandomNumber(20), RandomNumber(20),
+                        RandomNumber(20), RandomNumber(20), 6,
+                        characterTypes[characterClass], characterName);
                 break;
             default:
                 System.out.println("Uh oh...");
@@ -85,12 +91,11 @@ public class CharacterCreator {
             }
         }
 
-        return Integer.parseInt(input) - 1;
+        return Integer.parseInt(input);
     }
 
-    private static int RandomNumber() {
+    private static int RandomNumber(int max) {
         int min = 0;
-        int max = 20;
         Random random = new Random();
         return random.nextInt(max - min) + min;
     }
