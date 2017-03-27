@@ -12,11 +12,35 @@ public class CharacterCreator {
 
         String[] characterTypes = {"Fighter", "Paladin", "Barbarian", "Cleric", "Rouge", "Druid"};
         int characterClass = ClassChooser();
-
+                
         System.out.println("Enter the name of your character");
         characterName = sc.nextLine();
+        
+        // Remove ~ new BaseCharacter...
+        BaseCharacter newCharacter = new BaseCharacter(
+                RandomNumber(), RandomNumber(), RandomNumber(),
+                RandomNumber(), RandomNumber(),
+                characterTypes[characterClass], characterName);
+        
+                // Uncomment after fixing class defs
+        // Create character class based on input
+        //switch (characterClass) {
+        //case 1: newCharacter = = new Fighter( RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),characterTypes[characterClass], characterName); break;
+        //case 2: newCharacter = = new Paladin( RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),characterTypes[characterClass], characterName); break;
+        //case 3: newCharacter = = new Barbarian( RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),characterTypes[characterClass], characterName); break;
+        //case 4: newCharacter = = new Cleric( RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),characterTypes[characterClass], characterName); break;
+        //case 5: newCharacter = = new Rouge( RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),characterTypes[characterClass], characterName); break;
+        //case 6: newCharacter = = new Druid( RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(), RandomNumber(),characterTypes[characterClass], characterName); break;
+       // default: System.out.println("Uh oh..."); break;
+       // }
+        
+        System.out.println("Your character stats have been randomly rolled for you: ");
+        System.out.println();
+        System.out.println("You are the " + newCharacter.getType() + " who goes by the name " + newCharacter.getName());
+        System.out.println("Your stats are:");
+        newCharacter.PrintCharacterStats();
 
-        return RollCharacter(characterTypes[characterClass], characterName);
+        return newCharacter;//RollCharacter(characterTypes[characterClass], characterName);
     }
 
     private static int ClassChooser() {
@@ -44,13 +68,10 @@ public class CharacterCreator {
         return Integer.parseInt(input) - 1;
     }
 
-    private static BaseCharacter RollCharacter(String type, String name) {
+   /* private static BaseCharacter RollCharacter(String type, String name) {
 
-        BaseCharacter newCharacter = new BaseCharacter(
-                RandomNumber(), RandomNumber(), RandomNumber(),
-                RandomNumber(), RandomNumber(),
-                type, name);
-
+     
+        
         System.out.println("Your character stats have been randomly rolled for you: ");
         System.out.println();
         System.out.println("You are the " + newCharacter.getType() + " who goes by the name " + newCharacter.getName());
@@ -58,7 +79,7 @@ public class CharacterCreator {
         newCharacter.PrintCharacterStats();
 
         return newCharacter;
-    }
+    }*/
 
     private static int RandomNumber() {
         int min = 0;
