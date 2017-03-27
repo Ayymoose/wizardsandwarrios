@@ -1,8 +1,6 @@
-package character.classes;
+package character.hero;
 
 import character.BaseCharacter;
-
-import java.util.Random;
 
 public class Fighter extends BaseCharacter {
 
