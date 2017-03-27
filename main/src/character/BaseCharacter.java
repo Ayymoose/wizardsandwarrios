@@ -1,3 +1,5 @@
+package character;
+
 public class BaseCharacter {
 
     private int strength;

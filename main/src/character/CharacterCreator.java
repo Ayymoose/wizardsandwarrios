@@ -1,9 +1,12 @@
+package character;
+
+
 import java.util.Random;
 import java.util.Scanner;
 
-class CharacterCreator {
+public class CharacterCreator {
 
-    static BaseCharacter Create() {
+    public static BaseCharacter Create() {
         Scanner sc = new Scanner(System.in);
         String characterName;
 
