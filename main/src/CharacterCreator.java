@@ -45,7 +45,7 @@ class CharacterCreator {
 
         BaseCharacter newCharacter = new BaseCharacter(
                 RandomNumber(), RandomNumber(), RandomNumber(),
-                RandomNumber(), RandomNumber(), RandomNumber(),
+                RandomNumber(), RandomNumber(),
                 type, name);
 
         System.out.println("Your character stats have been randomly rolled for you: ");
