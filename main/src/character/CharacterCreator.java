@@ -21,32 +21,32 @@ public class CharacterCreator {
         switch (characterClass) {
             case 1:
                 newCharacter = new Fighter(RandomNumber(20), RandomNumber(20), RandomNumber(20),
-                        RandomNumber(20), RandomNumber(20), 10,
+                        RandomNumber(20), RandomNumber(20), RandomNumber(20), 10,
                         characterTypes[characterClass], characterName);
                 break;
             case 2:
                 newCharacter = new Paladin(RandomNumber(20), RandomNumber(20), RandomNumber(20),
-                        RandomNumber(20), RandomNumber(20), 8,
+                        RandomNumber(20), RandomNumber(20), RandomNumber(20), 8,
                         characterTypes[characterClass], characterName);
                 break;
             case 3:
                 newCharacter = new Barbarian(RandomNumber(20), RandomNumber(20), RandomNumber(20),
-                        RandomNumber(20), RandomNumber(20), 12,
+                        RandomNumber(20), RandomNumber(20),RandomNumber(20), 12,
                         characterTypes[characterClass], characterName);
                 break;
             case 4:
                 newCharacter = new Cleric(RandomNumber(20), RandomNumber(20), RandomNumber(20),
-                        RandomNumber(20), RandomNumber(20), 8,
+                        RandomNumber(20), RandomNumber(20), RandomNumber(20), 8,
                         characterTypes[characterClass], characterName);
                 break;
             case 5:
                 newCharacter = new Rouge(RandomNumber(20), RandomNumber(20), RandomNumber(20),
-                        RandomNumber(20), RandomNumber(20), 5,
+                        RandomNumber(20), RandomNumber(20), RandomNumber(20), 5,
                         characterTypes[characterClass], characterName);
                 break;
             case 6:
                 newCharacter = new Druid(RandomNumber(20), RandomNumber(20), RandomNumber(20),
-                        RandomNumber(20), RandomNumber(20), 6,
+                        RandomNumber(20), RandomNumber(20), RandomNumber(20),6,
                         characterTypes[characterClass], characterName);
                 break;
             default:
