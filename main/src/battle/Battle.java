@@ -18,8 +18,9 @@ public class Battle {
 	// Engages character and enemy in turn based battle
 	public void engage() {
 		int enemyHP = enemy.getHp();
-		System.out.println("You are now battling " + enemy.getName());
-		System.out.println(enemy.getName() + "[" + enemy.getHp() + "/" + enemyHP + "]");
+		int playerHP = character.getHp();
+
+		System.out.println("You are now battling " + enemy.getName() + "[" + enemy.getHp() + "/" + enemyHP + "]");
 		
 		// Print message depending on enemy 
 		System.out.println(enemy.getName() + " stands before you exerting its pressure with flames erupting from it's mouth!");
@@ -29,28 +30,45 @@ public class Battle {
 		int action;
 		
 		//
-	
+		int damage;
 		Random random = new Random();
 		//
 		
 		// Battle loop (Player side)
         while (true) {
+        	System.out.println(character.getName() + " [" + character.getHp() + "/" + playerHP + "]");
         	printOptions(); 
         	action = Integer.parseInt(scanner.nextLine()); 
             switch (action) {
             case 1: // Attack
-            	System.out.println("You strike the " + enemy.getName() + "!");
             	
-            	int damage = (character.getStrength() - random.nextInt(5)) + random.nextInt(5);
+            	// Player attack 
+            	System.out.println("You strike the " + enemy.getName() + "!");
+            	damage = (character.getStrength() - random.nextInt(5)) + random.nextInt(5);
+            	System.out.println("You dealt " + damage + " damage!");
             	// Decrement enemy HP 
             	enemy.setHP(enemy.getHp()-damage);  
-            	
             	if (damage <= 2) {
             		System.out.println("It hardly did any damage..."); 
             	} else if (damage > 2 && damage <= 6) {
             		System.out.println("You struck a well aimed blow!"); 
-            	} 
+            	} else if (damage > 6) {
+            		System.out.println("The " + enemy.getName() + " staggers back from your attack!"); 
+            	}
             	
+            	// Enemy attack 
+            	System.out.println("The " + enemy.getName() + " attacks you!");
+            	damage = (enemy.getStrength() - random.nextInt(3)) + random.nextInt(2);
+            	System.out.println("The " + enemy.getName() + " dealt " + damage + " damage to you!");
+            	// Decrement player HP 
+            	character.setHP(character.getHp()-damage);  
+            	if (damage <= 2) {
+            		System.out.println("It hardly did any damage..."); 
+            	} else if (damage > 2 && damage <= 6) {
+            		System.out.println("The sword clangs off your armour but you are still hurt!"); 
+            	} else if (damage > 6) {
+            		System.out.println("The overwhelming blow sweeps you off your feet!"); 
+            	}
             	
             	break;
             case 2: // Defend
@@ -91,10 +109,10 @@ public class Battle {
 	private void printOptions() {
 		System.out.println("What will you do?");
 		System.out.println("------------------");
-		System.out.println("1) Attack");
-		System.out.println("2) Defend");
-		System.out.println("3) Inventory");
-		System.out.println("4) Run");
+		System.out.println("(1) Attack");
+		System.out.println("(2) Defend");
+		System.out.println("(3) Inventory");
+		System.out.println("(4) Run");
 		System.out.println("------------------");
 	}
 
