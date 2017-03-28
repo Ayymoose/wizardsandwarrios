@@ -48,10 +48,10 @@ public class Enemy {
     public int getHp() {
         return hp;
     }
-    
+    /*
     public Item getDrop() {
     	return droplist.
-    }
+    }*/
 
     public void PrintCharacterStats() {
         System.out.println("Name: " + name);
