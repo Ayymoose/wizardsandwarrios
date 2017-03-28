@@ -55,6 +55,10 @@ public class Character {
         return hp;
     }
     
+    public void setHP(int hp) {
+    	this.hp = hp;
+    }
+    
     public String getInventory() {
     	return inventory.toString();
     }

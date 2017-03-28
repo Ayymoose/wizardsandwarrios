@@ -1,3 +1,4 @@
+import battle.Battle;
 import character.Character;
 import character.CharacterCreator;
 import enemy.Enemy;
@@ -8,6 +9,7 @@ public class Main {
         Character character = CharacterCreator.Create();
         Enemy enemy = EnemyCreator.create(1);
         enemy.PrintCharacterStats();
-
+        Battle battle = new Battle(character,enemy);
+        battle.engage();
     }
 }

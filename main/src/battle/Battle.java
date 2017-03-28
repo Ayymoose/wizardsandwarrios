@@ -43,7 +43,7 @@ public class Battle {
             	int damage = 4; 
 
             	// Decrement enemy HP 
-            	enemy.setHP(enemy.getHP()-damage);
+            	enemy.setHP(enemy.getHp()-damage);
             	
             	// Damage 
             	System.out.println("You stike the " + enemy.getName());
@@ -76,13 +76,13 @@ public class Battle {
             }
             
             // Enemy died
-            if (enemy.getHP() <= 0) {
+            if (enemy.getHp() <= 0) {
             	System.out.println("You defeated the " + enemy.getName());
         		//System.out.println("It dropped " + enemy.getDrop());
             	break;
             }
             // Character died
-            if (character.getHP() <= 0) {
+            if (character.getHp() <= 0) {
             	System.out.println("Oh no... You were killed in battle...");
             	break;
             }
