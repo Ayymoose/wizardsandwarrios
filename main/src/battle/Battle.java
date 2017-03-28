@@ -9,6 +9,7 @@ public class Battle {
 	
 	private Character character;
 	private Enemy enemy;
+	private Random random = new Random();
 	
 	public Battle(Character character, Enemy enemy) {
 		this.character = character;
@@ -22,15 +23,26 @@ public class Battle {
 
 		System.out.println("You are now battling " + enemy.getName() + "[" + enemy.getHp() + "/" + enemyHP + "]");
 		
-		// Print message depending on enemy 
-		System.out.println(enemy.getName() + " stands before you exerting its pressure with flames erupting from it's mouth!");
-		// ...
-		
+		// Enemy description
+		String type = enemy.getType();
+		if (type.equals("Undead")) {
+			System.out.println(enemy.getName() + " brandishes his honed bone sword and shield!");
+		} else if (type.equals("Animal")) {
+			System.out.println(enemy.getName() + " unleashes a deadly howl that pierces the night sky!");
+		} else if (type.equals("Beast")) {
+			System.out.println(enemy.getName() + " bares its crystal fangs at you!");
+		} else if (type.equals("Spirit")) {
+			System.out.println("Flames openly spill over the back of the " + enemy.getName() + " onto the floor!");
+		} else if (type.equals("Dragon")) {
+			System.out.println(enemy.getName() + " flaps its vast wings that blows everything away!");
+		} else if (type.equals("Demon")) {
+			System.out.println(enemy.getName() + " stares into your soul with his red eyes!");
+		}
+	
+		//
 		Scanner scanner = new Scanner(System.in);
 		int action;
-		
-		//
-		int damage;
+
 		Random random = new Random();
 		//
 		
@@ -41,44 +53,19 @@ public class Battle {
         	action = Integer.parseInt(scanner.nextLine()); 
             switch (action) {
             case 1: // Attack
-            	
-            	// Player attack 
-            	System.out.println("You strike the " + enemy.getName() + "!");
-            	damage = (character.getStrength() - random.nextInt(5)) + random.nextInt(5);
-            	System.out.println("You dealt " + damage + " damage!");
-            	// Decrement enemy HP 
-            	enemy.setHP(enemy.getHp()-damage);  
-            	if (damage <= 2) {
-            		System.out.println("It hardly did any damage..."); 
-            	} else if (damage > 2 && damage <= 6) {
-            		System.out.println("You struck a well aimed blow!"); 
-            	} else if (damage > 6) {
-            		System.out.println("The " + enemy.getName() + " staggers back from your attack!"); 
-            	}
-            	
-            	// Enemy attack 
-            	System.out.println("The " + enemy.getName() + " attacks you!");
-            	damage = (enemy.getStrength() - random.nextInt(3)) + random.nextInt(2);
-            	System.out.println("The " + enemy.getName() + " dealt " + damage + " damage to you!");
-            	// Decrement player HP 
-            	character.setHP(character.getHp()-damage);  
-            	if (damage <= 2) {
-            		System.out.println("It hardly did any damage..."); 
-            	} else if (damage > 2 && damage <= 6) {
-            		System.out.println("The sword clangs off your armour but you are still hurt!"); 
-            	} else if (damage > 6) {
-            		System.out.println("The overwhelming blow sweeps you off your feet!"); 
-            	}
-            	
+            	int playerDamage = (character.getStrength() - random.nextInt(5)) + random.nextInt(5);
+            	int enemyDamage =  random.nextInt(5) + ((enemy.getStrength() - random.nextInt(3)) + random.nextInt(20)) / character.getDefence() ;
+            	playerAttack(playerDamage);
+            	enemyAttack(enemyDamage);
             	break;
             case 2: // Defend
-            	System.out.println("You brace for impact...");
+            	int defendDamage = ((enemy.getStrength() - random.nextInt(3)) + random.nextInt(20)) / (character.getDefence() * 2);
+            	playerDefend(defendDamage);
             	break;
             case 3: // Use some item from your inventory
-            	
+            	character.getInventory();
             	break;
             case 4: // Try to run/
-                int min = 0;
                 if (random.nextInt(5) == 2) {
                 	System.out.println("You barely managed to run away!");
                 	break;
@@ -106,6 +93,41 @@ public class Battle {
 		
 	}
 	
+	private void enemyAttack(int damage) {
+    	// Enemy attack 
+    	System.out.println("The " + enemy.getName() + " attacks you!");
+    	System.out.println("The " + enemy.getName() + " dealt " + damage + " damage to you!");
+    	// Decrement player HP 
+    	character.setHP(character.getHp()-damage);  
+    	if (damage <= 2) {
+    		System.out.println("It hardly did any damage..."); 
+    	} else if (damage > 2 && damage <= 6) {
+    		System.out.println("The attack dents your armour but you are still hurt!"); 
+    	} else if (damage > 6) {
+    		System.out.println("The overwhelming blow sweeps you off your feet!"); 
+    	}
+	}
+	
+	private void playerAttack(int damage) {
+    	// Player attack 
+    	System.out.println("You strike the " + enemy.getName() + "!");
+    	System.out.println("You dealt " + damage + " damage!");
+    	// Decrement enemy HP 
+    	enemy.setHP(enemy.getHp()-damage);  
+    	if (damage <= 2) {
+    		System.out.println("It hardly did any damage..."); 
+    	} else if (damage > 2 && damage <= 6) {
+    		System.out.println("You struck a well aimed blow!"); 
+    	} else if (damage > 6) {
+    		System.out.println("The " + enemy.getName() + " staggers back from your attack!"); 
+    	}
+	}
+	
+	private void playerDefend(int damage) {
+		System.out.println("You brace for impact...");
+		enemyAttack(damage);
+	}
+	
 	private void printOptions() {
 		System.out.println("What will you do?");
 		System.out.println("------------------");
@@ -115,5 +137,6 @@ public class Battle {
 		System.out.println("(4) Run");
 		System.out.println("------------------");
 	}
+	
 
 }

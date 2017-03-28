@@ -9,6 +9,7 @@ public class Character {
     private int wisdom;
     private int hp;
     private int defence;
+    private String weapon;
     private String type;
     private String name;
     private Inventory inventory = new Inventory();
