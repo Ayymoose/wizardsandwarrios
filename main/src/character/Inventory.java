@@ -26,6 +26,7 @@ public class Inventory {
 		inventory.remove(itemid);
 	}
 	
+	
 	public String toString() {
         Iterator iterator = inventory.iterator();
         while (iterator.hasNext()) {

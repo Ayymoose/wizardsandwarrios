@@ -25,30 +25,25 @@ public class Battle {
 		System.out.println(enemy.getName() + " stands before you exerting its pressure with flames erupting from it's mouth!");
 		// ...
 		
-		printOptions();
-		
 		Scanner scanner = new Scanner(System.in);
 		int action;
 		
 		//
 	
-		
+		Random random = new Random();
 		//
 		
 		// Battle loop (Player side)
         while (true) {
+        	printOptions(); 
         	action = Integer.parseInt(scanner.nextLine()); 
             switch (action) {
             case 1: // Attack
-            	System.out.println("You strike the " + enemy.getName());
+            	System.out.println("You strike the " + enemy.getName() + "!");
             	
-            	int damage = 4; 
-
+            	int damage = (character.getStrength() - random.nextInt(5)) + random.nextInt(5);
             	// Decrement enemy HP 
-            	enemy.setHP(enemy.getHp()-damage);
-            	
-            	// Damage 
-            	System.out.println("You stike the " + enemy.getName());
+            	enemy.setHP(enemy.getHp()-damage);  
             	
             	if (damage <= 2) {
             		System.out.println("It hardly did any damage..."); 
@@ -66,7 +61,6 @@ public class Battle {
             	break;
             case 4: // Try to run/
                 int min = 0;
-                Random random = new Random();
                 if (random.nextInt(5) == 2) {
                 	System.out.println("You barely managed to run away!");
                 	break;
@@ -76,12 +70,14 @@ public class Battle {
             	break;
             default: printOptions(); break;
             }
-            System.out.println(enemy.getName() + "[" + enemy.getHp() + "/" + enemyHP + "]");
+            
             // Enemy died
             if (enemy.getHp() <= 0) {
-            	System.out.println("You defeated the " + enemy.getName());
+            	System.out.println("You defeated the " + enemy.getName() + "!");
         		//System.out.println("It dropped " + enemy.getDrop());
             	break;
+            } else {
+            	System.out.println(enemy.getName() + "[" + enemy.getHp() + "/" + enemyHP + "]");
             }
             // Character died
             if (character.getHp() <= 0) {
