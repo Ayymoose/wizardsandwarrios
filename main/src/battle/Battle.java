@@ -17,8 +17,10 @@ public class Battle {
 	
 	// Engages character and enemy in turn based battle
 	public void engage() {
+		int enemyHP = enemy.getHp();
 		System.out.println("You are now battling " + enemy.getName());
-
+		System.out.println(enemy.getName() + "[" + enemy.getHp() + "/" + enemyHP + "]");
+		
 		// Print message depending on enemy 
 		System.out.println(enemy.getName() + " stands before you exerting its pressure with flames erupting from it's mouth!");
 		// ...
@@ -74,7 +76,7 @@ public class Battle {
             	break;
             default: printOptions(); break;
             }
-            
+            System.out.println(enemy.getName() + "[" + enemy.getHp() + "/" + enemyHP + "]");
             // Enemy died
             if (enemy.getHp() <= 0) {
             	System.out.println("You defeated the " + enemy.getName());
