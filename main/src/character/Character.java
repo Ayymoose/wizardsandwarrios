@@ -50,6 +50,10 @@ public class Character {
     public String getName() {
         return name;
     }
+
+    public int getHp() {
+        return hp;
+    }
     
     public String getInventory() {
     	return inventory.toString();

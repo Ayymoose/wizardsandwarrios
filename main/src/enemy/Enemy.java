@@ -42,7 +42,13 @@ public class Enemy {
     	this.hp = hp;
     }
 
+    public int getHp() {
+        return hp;
+    }
+
     public void PrintCharacterStats() {
+        System.out.println("Name: " + name);
+        System.out.println("Type: " + type);
         System.out.println("Strength: " + strength);
         System.out.println("Dexterity: " + dexterity);
         System.out.println("Constitution: " + constitution);
