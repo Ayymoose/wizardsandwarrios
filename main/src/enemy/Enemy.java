@@ -37,6 +37,10 @@ public class Enemy {
     public String getName() {
         return name;
     }
+    
+    public void setHP(int hp) {
+    	this.hp = hp;
+    }
 
     public void PrintCharacterStats() {
         System.out.println("Strength: " + strength);
