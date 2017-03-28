@@ -2,7 +2,7 @@ package battle;
 
 import java.util.Random;
 import java.util.Scanner;
-
+import character.Character;
 import enemy.Enemy;
 
 public class Battle {
