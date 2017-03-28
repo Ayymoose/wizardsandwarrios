@@ -35,3 +35,14 @@ public class Inventory {
 	}
 
 }
+
+
+// Skeleton Marauder - Undead 
+// Keltir            - Animal 
+
+// Opal Beast        - Beast 
+// Salamander        - Spirit
+
+// Dire Wyrm         - Dragon
+// Nightmare Lord    - Demon
+
