@@ -8,17 +8,19 @@ public class Character {
     private int intelligence;
     private int wisdom;
     private int hp;
+    private int defence;
     private String type;
     private String name;
     private Inventory inventory = new Inventory();
 
-    public Character(int strength, int dexterity, int constitution, int intelligence, int wisdom, int hp, String type, String name) {
+    public Character(int strength, int dexterity, int constitution, int intelligence, int wisdom, int hp, int defence, String type, String name) {
         this.strength = strength;
         this.dexterity = dexterity;
         this.constitution = constitution;
         this.intelligence = intelligence;
         this.wisdom = wisdom;
         this.hp = hp;
+        this.defence = defence;
         this.type = type;
         this.name = name;
     }
@@ -58,7 +60,11 @@ public class Character {
     public void setHP(int hp) {
     	this.hp = hp;
     }
-    
+
+    public int getDefence() {
+        return defence;
+    }
+
     public String getInventory() {
     	return inventory.toString();
     }
