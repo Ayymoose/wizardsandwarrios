@@ -1,5 +1,7 @@
 package enemy;
 
+import character.Inventory;
+
 public class Enemy {
 
     private int strength;
@@ -8,6 +10,7 @@ public class Enemy {
     private int hp;
     private String type;
     private String name;
+    private Inventory droplist;
 
     public Enemy(int strength, int dexterity, int constitution, int hp, String type, String name) {
         this.strength = strength;
@@ -44,6 +47,10 @@ public class Enemy {
 
     public int getHp() {
         return hp;
+    }
+    
+    public Item getDrop() {
+    	return droplist.
     }
 
     public void PrintCharacterStats() {
