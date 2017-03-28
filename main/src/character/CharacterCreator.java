@@ -1,6 +1,6 @@
 package character;
 
-import character.hero.*;
+import character.classes.*;
 
 import java.util.Random;
 import java.util.Scanner;
