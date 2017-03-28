@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class CharacterCreator {
 
-    public static BaseCharacter Create() {
+    public static Character Create() {
         Scanner sc = new Scanner(System.in);
         String characterName;
 
@@ -17,7 +17,7 @@ public class CharacterCreator {
         System.out.println("Enter the name of your character");
         characterName = sc.nextLine();
 
-        BaseCharacter newCharacter = null;
+        Character newCharacter = null;
         switch (characterClass) {
             case 1:
                 newCharacter = new Fighter(RandomNumber(20), RandomNumber(20), RandomNumber(20),

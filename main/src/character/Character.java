@@ -1,6 +1,6 @@
 package character;
 
-public class BaseCharacter {
+public class Character {
 
     private int strength;
     private int dexterity;
@@ -12,7 +12,7 @@ public class BaseCharacter {
     private String name;
     private Inventory inventory = new Inventory();
 
-    public BaseCharacter(int strength, int dexterity, int constitution, int intelligence, int wisdom, int hp, String type, String name) {
+    public Character(int strength, int dexterity, int constitution, int intelligence, int wisdom, int hp, String type, String name) {
         this.strength = strength;
         this.dexterity = dexterity;
         this.constitution = constitution;
