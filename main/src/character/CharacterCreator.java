@@ -63,7 +63,7 @@ public class CharacterCreator {
         
         System.out.println();
         System.out.println("You're in luck! You're inventory is stocked with:");
-        System.out.println(newCharacter.getInventory());
+        System.out.println(newCharacter.printInventory());
 
         return newCharacter;
     }

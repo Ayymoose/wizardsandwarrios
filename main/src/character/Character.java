@@ -66,10 +66,14 @@ public class Character {
         return defence;
     }
 
-    public String getInventory() {
+    public String printInventory() {
     	return inventory.toString();
     }
 
+    public Inventory getInventory() {
+    	return inventory;
+    }
+    
     public void PrintCharacterStats() {
         System.out.println("Strength: " + strength);
         System.out.println("Dexterity: " + dexterity);

@@ -2,7 +2,9 @@ package battle;
 
 import java.util.Random;
 import java.util.Scanner;
+
 import character.Character;
+import character.Inventory;
 import enemy.Enemy;
 
 public class Battle {
@@ -10,17 +12,18 @@ public class Battle {
 	private Character character;
 	private Enemy enemy;
 	private Random random = new Random();
+	private int playerHP;
+	private int enemyHP;
 	
 	public Battle(Character character, Enemy enemy) {
 		this.character = character;
 		this.enemy = enemy;
+		playerHP = character.getHp();
+		enemyHP = enemy.getHp();
 	}
 	
 	// Engages character and enemy in turn based battle
 	public void engage() {
-		int enemyHP = enemy.getHp();
-		int playerHP = character.getHp();
-
 		System.out.println("You are now battling " + enemy.getName() + "[" + enemy.getHp() + "/" + enemyHP + "]");
 		
 		// Enemy description
@@ -63,7 +66,7 @@ public class Battle {
             	playerDefend(defendDamage);
             	break;
             case 3: // Use some item from your inventory
-            	character.getInventory();
+            	useInventoryItem(character);
             	break;
             case 4: // Try to run/
                 if (random.nextInt(5) == 2) {
@@ -121,11 +124,48 @@ public class Battle {
     	} else if (damage > 6) {
     		System.out.println("The " + enemy.getName() + " staggers back from your attack!"); 
     	}
+
 	}
 	
 	private void playerDefend(int damage) {
 		System.out.println("You brace for impact...");
 		enemyAttack(damage);
+	}
+	
+	private void useInventoryItem(Character character) {
+		System.out.println("Which item will you use?");
+    	character.printInventory();
+    	Inventory inv = character.getInventory();
+    	int option_max = inv.size();
+    	Scanner sc = new Scanner(System.in);
+    	
+    	while (true) {
+    		int option = Integer.parseInt(sc.nextLine());
+    		if (option < option_max) {
+    			// Get item info 
+    			int type = inv.getItem(option).getType();
+    			String name = inv.getItem(option).getName();
+    			System.out.println("You used your " + name + "!");
+    			int enemyDamage =  random.nextInt(5) + ((enemy.getStrength() - random.nextInt(3)) + random.nextInt(20)) / character.getDefence();
+    			switch (type) {
+    			case 0: 
+    				System.out.println("What are you doing? You can't use that in a battle!");
+    				break;
+    			case 1: // Weapon
+    				int weaponDamage = inv.getItem(option).getDamage();
+    				playerAttack(weaponDamage + character.getStrength());
+    				enemyAttack(enemyDamage);
+    				break;
+    			case 2: //Health effect
+    				int health = inv.getItem(option).getHealth();
+    				System.out.println("Your health has been replenished by " + health + "!");
+    				character.setHP(Math.min(character.getHp()+health,playerHP));
+    				enemyAttack(enemyDamage);
+    				break;
+    			}
+    			break;
+    		}
+    	}
 	}
 	
 	private void printOptions() {
